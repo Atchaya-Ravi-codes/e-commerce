@@ -2,6 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { Button } from "../ui/button";
 
 export const HeaderBanner = () => {
   const [close, setClose] = useState<boolean>(true);
@@ -19,7 +20,7 @@ export const HeaderBanner = () => {
           <Link className="font-medium underline underline-offset-2" href="#">
             Sign Up Now
           </Link>
-          <button onClick={handleClose}>
+          <Button onClick={handleClose} variant="ghost">
             <Image
               alt="close-icon"
               className="absolute right-0 top-[50%] translate-y-[-50%] hidden md:inline"
@@ -27,7 +28,7 @@ export const HeaderBanner = () => {
               src="/images/close.svg"
               width={20}
             />
-          </button>
+          </Button>
         </div>
       </div>
     )

@@ -3,11 +3,27 @@ import Image from "next/image";
 import { useIsBreakpoint } from "../../hooks/useIsBreakpoint/useIsBreakpoint";
 import { Breakpoint } from "../../types/breakpoint";
 import React from "react";
+import { Button } from "../ui/button";
+import { count } from "console";
 
 export const HomeBanner = () => {
   const isMobile = useIsBreakpoint(Breakpoint.Small);
+  const bannerCount = [
+    {
+      label: "International Brands",
+      count: "200",
+    },
+    {
+      label: "High-Quality Products",
+      count: "2000",
+    },
+    {
+      label: "Happy Customers",
+      count: "30,000",
+    },
+  ];
   return (
-    <div className="bg-zinc-100 md:bg-[url('/images/home-banner.svg')] md:bg-cover md:bg-center md:h-[663px] flex flex-col md:flex-row">
+    <div className="bg-zinc-100 md:bg-[url('/images/home-banner.svg')] md:bg-cover md:bg-center flex flex-col md:flex-row">
       <div className="sm:w-full md:w-1/2 md:pl-[100px] px-4">
         <div className="text-4xl md:text-[64px] font-bold leading-8 md:leading-[64px] pt-10 md:pt-[100px]">
           FIND CLOTHES THAT MATCHES YOUR STYLE
@@ -17,12 +33,28 @@ export const HomeBanner = () => {
           designed to bring out your individuality and cater to your sense of
           style.
         </div>
-        <button className="bg-black rounded-full py-3 w-full md:w-[210px] text-white mt-6 md:mt-8">
+        <Button className="rounded-full w-full md:w-[210px] mt-6 md:mt-8">
           Shop Now
-        </button>
+        </Button>
+        <div className="flex justify-around gap-x-4 gap-y-[14px] pt-5 lg:pt-12 flex-wrap md:pb-28 px-14 lg:px-0">
+          {bannerCount.map((list) => {
+            return (
+              <div key={list.count}>
+                <div className="font-semibold text-2xl md:text-[40px] leading-10">{list.count}+</div>
+                <div className="text-xs md:text-base text-[#00000099]">{list.label}</div>
+              </div>
+            );
+          })}
+        </div>
       </div>
       {isMobile ? (
-        <Image alt="home-banner-mobile" className="w-full h-full" src="/images/home-banner-mobile.svg" height={448} width={390}/>
+        <Image
+          alt="home-banner-mobile"
+          className="w-full h-full"
+          src="/images/home-banner-mobile.svg"
+          height={448}
+          width={390}
+        />
       ) : null}
     </div>
   );

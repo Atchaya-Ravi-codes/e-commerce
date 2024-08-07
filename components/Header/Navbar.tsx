@@ -5,7 +5,14 @@ import Image from "next/image";
 import React, { useState } from "react";
 import { classNames } from "@/utilities/classNames";
 import Link from "next/link";
-import { Option, Select } from "../Select/Select";
+import { Button } from "../ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "../ui/dropdown-menu";
+import { Input } from "../ui/input";
 
 export const Navbar = () => {
   const isMobile = useIsBreakpoint(Breakpoint.Small, Breakpoint.Medium);
@@ -23,7 +30,6 @@ export const Navbar = () => {
       value: "shorts",
     },
   ];
-  const [selectedMenu, setSelectedMenu] = useState<Option | null>(null);
   return (
     <div
       className={classNames(
@@ -38,14 +44,14 @@ export const Navbar = () => {
         )}
       >
         {isMobile ? (
-          <button>
+          <Button variant="ghost">
             <Image
               alt="mobile-menu-icon"
               src="/images/menu.svg"
               width={24}
               height={24}
             />
-          </button>
+          </Button>
         ) : null}
         <Link href="/">
           <Image
@@ -60,12 +66,27 @@ export const Navbar = () => {
       {!isMobile && (
         <>
           <div className="flex-1 space-x-6 flex items-center">
-            <Select
-              placeholder="Shop"
-              options={shopMenuOptions}
-              selected={selectedMenu}
-              onChange={() => null}
-            />
+            <DropdownMenu>
+              <DropdownMenuTrigger className="flex items-center">
+                <span className="pr-1">Shop</span>
+                <Image
+                  alt="select-arrow"
+                  src="/images/arrow-down.svg"
+                  width={16}
+                  height={16}
+                />
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
+                {shopMenuOptions.map((option) => {
+                  return (
+                    <DropdownMenuItem key={option.value}>
+                      {option.label}
+                    </DropdownMenuItem>
+                  );
+                })}
+              </DropdownMenuContent>
+            </DropdownMenu>
+
             <Link href="#">On Sale</Link>
             <Link href="#">New Arrivals</Link>
             <Link href="#">Brands</Link>
@@ -82,11 +103,10 @@ export const Navbar = () => {
                   height={24}
                 />
               </span>
-              <input
+              <Input
                 className="bg-[#F0F0F0] rounded-full placeholder:text-[#00000066] placeholder:text-base block w-full py-3 pl-11 pr-3"
-                placeholder="Search for products..."
                 type="text"
-                name="search"
+                placeholder="Search for products..."
               />
             </label>
           </div>
@@ -94,7 +114,7 @@ export const Navbar = () => {
       )}
       <div className="flex gap-x-4">
         {isMobile ? (
-          <button>
+          <Button className="p-0" variant="ghost">
             <Image
               alt="serach-icon"
               className=""
@@ -102,9 +122,9 @@ export const Navbar = () => {
               width={24}
               height={24}
             />
-          </button>
+          </Button>
         ) : null}
-        <button>
+        <Button className="p-0" variant="ghost">
           <Image
             alt="cart-icon"
             className=""
@@ -112,8 +132,8 @@ export const Navbar = () => {
             width={24}
             height={24}
           />
-        </button>
-        <button>
+        </Button>
+        <Button className="p-0" variant="ghost">
           <Image
             alt="user-icon"
             className=""
@@ -121,7 +141,7 @@ export const Navbar = () => {
             width={24}
             height={24}
           />
-        </button>
+        </Button>
       </div>
     </div>
   );
