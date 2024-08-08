@@ -4,10 +4,9 @@ import { useIsBreakpoint } from "../../hooks/useIsBreakpoint/useIsBreakpoint";
 import { Breakpoint } from "../../types/breakpoint";
 import React from "react";
 import { Button } from "../ui/button";
-import { count } from "console";
 
 export const HomeBanner = () => {
-  const isMobile = useIsBreakpoint(Breakpoint.Small);
+  const isMobile = useIsBreakpoint(Breakpoint.Small, Breakpoint.Medium);
   const bannerCount = [
     {
       label: "International Brands",
@@ -23,7 +22,7 @@ export const HomeBanner = () => {
     },
   ];
   return (
-    <div className="bg-zinc-100 md:bg-[url('/images/home-banner.svg')] md:bg-cover md:bg-center flex flex-col md:flex-row">
+    <div className="bg-zinc-100 lg:bg-[url('/images/home-banner.svg')] lg:bg-cover lg:bg-center flex flex-col md:flex-row relative">
       <div className="sm:w-full md:w-1/2 md:pl-[100px] px-4">
         <div className="text-4xl md:text-[64px] font-bold leading-8 md:leading-[64px] pt-10 md:pt-[100px]">
           FIND CLOTHES THAT MATCHES YOUR STYLE
@@ -40,13 +39,27 @@ export const HomeBanner = () => {
           {bannerCount.map((list) => {
             return (
               <div key={list.count}>
-                <div className="font-semibold text-2xl md:text-[40px] leading-10">{list.count}+</div>
-                <div className="text-xs md:text-base text-[#00000099]">{list.label}</div>
+                <div className="font-semibold text-2xl md:text-[40px] leading-10">
+                  {list.count}+
+                </div>
+                <div className="text-xs md:text-base text-[#00000099]">
+                  {list.label}
+                </div>
               </div>
             );
           })}
         </div>
       </div>
+      {!isMobile && (
+        <>
+          <Image
+            alt="home-banner-mobile"
+            src="/images/star.svg"
+            height={56}
+            width={56}
+          />
+        </>
+      )}
       {isMobile ? (
         <Image
           alt="home-banner-mobile"

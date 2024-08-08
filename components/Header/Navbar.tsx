@@ -2,8 +2,7 @@
 import { Breakpoint } from "../../types/breakpoint";
 import { useIsBreakpoint } from "../../hooks/useIsBreakpoint/useIsBreakpoint";
 import Image from "next/image";
-import React, { useState } from "react";
-import { classNames } from "@/utilities/classNames";
+import React from "react";
 import Link from "next/link";
 import { Button } from "../ui/button";
 import {
@@ -13,6 +12,7 @@ import {
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
 import { Input } from "../ui/input";
+import { cn } from "@/lib/utils";
 
 export const Navbar = () => {
   const isMobile = useIsBreakpoint(Breakpoint.Small, Breakpoint.Medium);
@@ -32,13 +32,13 @@ export const Navbar = () => {
   ];
   return (
     <div
-      className={classNames(
+      className={cn(
         "container py-6 mx-auto flex justify-between items-center gap-10",
         isMobile && "px-4"
       )}
     >
       <div
-        className={classNames(
+        className={cn(
           "flex items-center gap-x-4 flex-2",
           isMobile && "gap-x-0"
         )}
@@ -56,7 +56,7 @@ export const Navbar = () => {
         <Link href="/">
           <Image
             alt="logo"
-            className={classNames("h-[22px]", isMobile && "h-[18px]")}
+            className={cn("h-[22px]", isMobile && "h-[18px]")}
             src="/images/logo.svg"
             width={isMobile ? 128 : 160}
             height={isMobile ? 18 : 22}

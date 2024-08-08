@@ -7,7 +7,7 @@ import React from "react";
 export const BrandBanner = () => {
   const isMobile = useIsBreakpoint(Breakpoint.Small, Breakpoint.Medium);
   return (
-    <div className="bg-black py-10 flex justify-around lg:px-24 flex-wrap gap-x-8 gap-y-8">
+    <div className="bg-black py-10 flex justify-around lg:px-24 flex-wrap gap-x-8 gap-y-8 mb-2">
       {isMobile ? (
         <>
           <Image
