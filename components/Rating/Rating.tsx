@@ -20,6 +20,7 @@ export const Rating = ({
       {Array.from({ length: filledStars }).map((_, index) => (
         <Image
           alt="full-star"
+          className="w-auto h-auto"
           key={index}
           src="/images/full-star.svg"
           width={18}
@@ -29,6 +30,7 @@ export const Rating = ({
       {hasHalfStar && (
         <Image
           alt="half-star"
+          className="w-auto h-auto"
           src="/images/half-star.svg"
           width={18}
           height={18}

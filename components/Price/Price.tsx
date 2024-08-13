@@ -1,5 +1,5 @@
 import React from "react";
-import { PriceType } from "./types";
+import { PriceType } from "../Price/types";
 
 export interface PriceProps {
   price: PriceType;

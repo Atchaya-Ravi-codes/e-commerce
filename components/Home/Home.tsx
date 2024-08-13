@@ -1,12 +1,11 @@
 import React from "react";
 import { HomeBanner } from "./HomeBanner";
-import { BrandBanner } from "./BrandBanner";
-import { products, reviews } from "./__fixtures___";
-import { ProductList } from "./ProductList";
+import { BrandBanner } from "../BrandBanner/BrandBanner";
+import { ProductList } from "../ProductList/ProductList";
 import { Separator } from "../ui/separator";
-import { ReviewCarousel } from "./ReviewCarousel";
-import { shopByCategoryData } from "./__fixtures___/index";
-import { ShopByCategory } from "./ShopByCategory";
+import { ReviewCarousel } from "../ReviewCarousel/ReviewCarousel";
+import { shopByCategoryData, products, reviews } from "./__fixtures___/index";
+import { ShopByCategory } from "../ShopByCategory/ShopByCategory";
 
 export const Home = () => {
   const productDisplay = products.slice(0, 3);

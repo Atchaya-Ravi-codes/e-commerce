@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, CardContent } from "../ui/card";
-import { Rating } from "../ProductCard/Rating";
+import { Rating } from "../Rating/Rating";
 import Image from "next/image";
 import { reviewType } from "./types";
 
@@ -18,6 +18,7 @@ export const ReviewCard = ({ review }: ReviewCardProps) => {
           {review.verified && (
             <Image
               alt="verified-icon"
+              className="w-6 h-6"
               src="/images/verified.svg"
               width={24}
               height={24}

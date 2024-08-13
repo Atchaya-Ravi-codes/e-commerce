@@ -1,3 +1,5 @@
+import { PriceType } from "../Price/types";
+
 export type productType = {
     title: string,
     images: Array<ImageType>;
@@ -9,8 +11,3 @@ export type ImageType = {
     alt: String,
     url: string,
 }
-export type PriceType = {
-    originalPrice: number,
-    discountedPrice: number,
-    discountPercentage: number,
-  };

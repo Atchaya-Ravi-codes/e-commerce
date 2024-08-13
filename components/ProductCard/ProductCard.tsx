@@ -2,8 +2,8 @@
 import Image from "next/image";
 import React from "react";
 import { productType } from "./types";
-import { Price } from "./Price";
-import { Rating } from "./Rating";
+import { Price } from "../Price/Price";
+import { Rating } from "../Rating/Rating";
 import { useIsBreakpoint } from "@/hooks/useIsBreakpoint/useIsBreakpoint";
 import { Breakpoint } from "@/types/breakpoint";
 import { cn } from "@/lib/utils";

@@ -6,8 +6,8 @@ import {
   CarouselContent,
   CarouselItem,
 } from "../ui/carousel";
-import { ReviewCard } from "./ReviewCard";
-import { reviewType } from "./types";
+import { ReviewCard } from "../ReviewCard/ReviewCard";
+import { reviewType } from "../ReviewCard/types";
 
 interface ReviewCarouselProps {
   reviews: reviewType[];
