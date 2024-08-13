@@ -15,7 +15,7 @@ interface ReviewCarouselProps {
 
 export const ReviewCarousel = ({ reviews }: ReviewCarouselProps) => {
   return (
-    <Carousel className="mt-20 mx-4 lg:mx-24">
+    <Carousel className="mt-12 lg:mt-20 mx-4 lg:mx-24">
       <div className="uppercase text-3xl lg:text-5xl font-bold">OUR HAPPY CUSTOMERS</div>
       <CarouselPrevious className="top-8 border-0 left-[90%] lg:left-[94%] bg-transparent hover:bg-transparent" />
       <CarouselNext className="top-8 border-0 left-[97%] bg-transparent hover:bg-transparent" />

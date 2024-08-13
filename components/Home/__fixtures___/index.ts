@@ -122,3 +122,29 @@ export const reviews = [
       "I’ve been shopping at Shop.co for a while now, and I’m always satisfied with their products. The only downside is that sometimes items go out of stock quickly.",
   },
 ];
+export const shopByCategoryData = [
+  {
+    id: "01",
+    alt: "casual",
+    name: "Casual",
+    url: "/images/casual.svg",
+  },
+  {
+    id: "02",
+    alt: "formal",
+    name: "Formal",
+    url: "/images/formal.svg",
+  },
+  {
+    id: "03",
+    alt: "party",
+    name: "Party",
+    url: "/images/party.svg",
+  },
+  {
+    id: "04",
+    alt: "gym",
+    name: "Gym",
+    url: "/images/gym.svg",
+  },
+];
