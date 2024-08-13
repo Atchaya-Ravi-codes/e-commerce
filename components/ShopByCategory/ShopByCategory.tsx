@@ -8,6 +8,7 @@ export interface CategoryData {
   id: string | number;
   name: string;
   url: string;
+  alt: string;
 }
 
 export interface ShopByCategoryProps {
