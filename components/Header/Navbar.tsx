@@ -34,7 +34,7 @@ export const Navbar = () => {
     <div
       className={cn(
         "container py-6 mx-auto flex justify-between items-center gap-10",
-        isMobile && "px-4"
+        isMobile && "px-4 py-5"
       )}
     >
       <div
@@ -44,7 +44,7 @@ export const Navbar = () => {
         )}
       >
         {isMobile ? (
-          <Button variant="ghost">
+          <Button className="p-0 "variant="ghost">
             <Image
               alt="mobile-menu-icon"
               src="/images/menu.svg"

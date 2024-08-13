@@ -4,6 +4,7 @@ import { useIsBreakpoint } from "../../hooks/useIsBreakpoint/useIsBreakpoint";
 import { Breakpoint } from "../../types/breakpoint";
 import React from "react";
 import { Button } from "../ui/button";
+import { cn } from "@/lib/utils";
 
 export const HomeBanner = () => {
   const isMobile = useIsBreakpoint(Breakpoint.Small, Breakpoint.Medium);
@@ -22,27 +23,66 @@ export const HomeBanner = () => {
     },
   ];
   return (
-    <div className="bg-zinc-100 lg:bg-[url('/images/home-banner.svg')] lg:bg-cover lg:bg-center flex flex-col md:flex-row relative">
-      <div className="sm:w-full md:w-1/2 md:pl-[100px] px-4">
-        <div className="text-4xl md:text-[64px] font-bold leading-8 md:leading-[64px] pt-10 md:pt-[100px]">
+    <div
+      className={cn(
+        "flex flex-row relative",
+        isMobile
+          ? "bg-zinc-100 flex-col"
+          : " bg-[url('/images/banner-image.jpg')] bg-cover bg-center"
+      )}
+    >
+      <div className={cn(isMobile ? "w-full px-4" : "w-1/2 pl-[100px]")}>
+        <div
+          className={cn(
+            "font-bold",
+            isMobile
+              ? "text-4xl leading-8  pt-10"
+              : "text-[64px] leading-[64px] pt-[100px]"
+          )}
+        >
           FIND CLOTHES THAT MATCHES YOUR STYLE
         </div>
-        <div className="pt-5 md:pt-8 text-[#00000099] text-sm md:text-base leading-5 md:leading-6">
+        <div
+          className={cn(
+            "text-[#00000099]",
+            isMobile ? "text-sm leading-5 pt-5" : "text-base leading-6 pt-8"
+          )}
+        >
           Browse through our diverse range of meticulously crafted garments,
           designed to bring out your individuality and cater to your sense of
           style.
         </div>
-        <Button className="rounded-full w-full md:w-[210px] mt-6 md:mt-8">
+        <Button
+          className={cn(
+            "rounded-full",
+            isMobile ? "w-full mt-6 " : "w-[210px] mt-8"
+          )}
+        >
           Shop Now
         </Button>
-        <div className="flex justify-around gap-x-4 gap-y-[14px] pt-5 lg:pt-12 flex-wrap md:pb-28 px-14 lg:px-0">
+        <div
+          className={cn(
+            "flex justify-around gap-x-4 gap-y-[14px] flex-wrap",
+            isMobile ? "pt-5 px-14" : "pb-28 px-0 pt-12"
+          )}
+        >
           {bannerCount.map((list) => {
             return (
               <div key={list.count}>
-                <div className="font-semibold text-2xl md:text-[40px] leading-10">
+                <div
+                  className={cn(
+                    "font-semibold leading-10",
+                    isMobile ? "text-2xl" : "text-[40px]"
+                  )}
+                >
                   {list.count}+
                 </div>
-                <div className="text-xs md:text-base text-[#00000099]">
+                <div
+                  className={cn(
+                    "text-[#00000099]",
+                    isMobile ? "text-xs" : "text-base"
+                  )}
+                >
                   {list.label}
                 </div>
               </div>
@@ -50,20 +90,10 @@ export const HomeBanner = () => {
           })}
         </div>
       </div>
-      {!isMobile && (
-        <>
-          <Image
-            alt="home-banner-mobile"
-            src="/images/star.svg"
-            height={56}
-            width={56}
-          />
-        </>
-      )}
       {isMobile ? (
         <Image
           alt="home-banner-mobile"
-          className="w-full h-full"
+          className="w-full"
           src="/images/home-banner-mobile.svg"
           height={448}
           width={390}

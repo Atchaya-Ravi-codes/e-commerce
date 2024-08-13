@@ -17,12 +17,14 @@ export const ProductList = ({ products, category }: ProductListProps) => {
           return <ProductCard key={product.id} product={product} />;
         })}
       </div>
-      <Button
-        className="rounded-full px-20 mx-auto mt-6 mb-10 lg:mt-9 lg:mb-16 w-full md:w-auto"
-        variant="outline"
-      >
-        View All
-      </Button>
+      <div className="mt-6 mb-10 lg:mt-9 lg:mb-16 mx-4">
+        <Button
+          className="rounded-full px-20 w-full md:w-auto"
+          variant="outline"
+        >
+          View All
+        </Button>
+      </div>
     </div>
   );
 };
