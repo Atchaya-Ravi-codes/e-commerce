@@ -5,7 +5,7 @@ import { Button } from "../ui/button";
 
 export const FooterBanner = () => {
   return (
-    <div className="bg-black flex flex-col lg:flex-row px-6 lg:px-16 py-7 lg:py-11 absolute w-[90%] rounded-3xl left-1/2 -translate-x-1/2">
+    <div className="bg-black flex flex-col lg:flex-row px-6 lg:px-16 py-7 lg:py-11 rounded-3xl mx-4 lg:mx-24 mt-12 lg:mt-[80px]">
       <div className="uppercase text-white text-[32px] lg:text-[40px] w-full lg:w-1/2 font-bold">
         STAY UPTO DATE ABOUT OUR LATEST OFFERS
       </div>
