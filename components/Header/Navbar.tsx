@@ -13,6 +13,11 @@ import {
 } from "../ui/dropdown-menu";
 import { Input } from "../ui/input";
 import { cn } from "@/lib/utils";
+import {
+  SheetTrigger,
+  SheetContent,
+  Sheet,
+} from "../ui/sheet";
 
 export const Navbar = () => {
   const isMobile = useIsBreakpoint(Breakpoint.Small, Breakpoint.Medium);
@@ -30,6 +35,35 @@ export const Navbar = () => {
       value: "shorts",
     },
   ];
+  const renderMenuList = () => {
+    return (
+      <>
+        <DropdownMenu className="w-[250px]">
+          <DropdownMenuTrigger className="flex items-center">
+            <span className="pr-1">Shop</span>
+            <Image
+              alt="select-arrow"
+              src="/images/arrow-down.svg"
+              width={16}
+              height={16}
+            />
+          </DropdownMenuTrigger>
+          <DropdownMenuContent>
+            {shopMenuOptions.map((option) => {
+              return (
+                <DropdownMenuItem key={option.value}>
+                  {option.label}
+                </DropdownMenuItem>
+              );
+            })}
+          </DropdownMenuContent>
+        </DropdownMenu>
+        <Link href="#">On Sale</Link>
+        <Link href="#">New Arrivals</Link>
+        <Link href="#">Brands</Link>
+      </>
+    );
+  };
   return (
     <div
       className={cn(
@@ -44,14 +78,21 @@ export const Navbar = () => {
         )}
       >
         {isMobile ? (
-          <Button className="p-0 "variant="ghost">
-            <Image
-              alt="mobile-menu-icon"
-              src="/images/menu.svg"
-              width={24}
-              height={24}
-            />
-          </Button>
+          <Sheet>
+            <SheetTrigger asChild>
+              <Button className="p-0" variant="ghost">
+                <Image
+                  alt="mobile-menu-icon"
+                  src="/images/menu.svg"
+                  width={24}
+                  height={24}
+                />
+              </Button>
+            </SheetTrigger>
+            <SheetContent>
+              <div className="grid gap-4 py-4">{renderMenuList()}</div>
+            </SheetContent>
+          </Sheet>
         ) : null}
         <Link href="/">
           <Image
@@ -66,30 +107,7 @@ export const Navbar = () => {
       {!isMobile && (
         <>
           <div className="flex-1 space-x-6 flex items-center">
-            <DropdownMenu>
-              <DropdownMenuTrigger className="flex items-center">
-                <span className="pr-1">Shop</span>
-                <Image
-                  alt="select-arrow"
-                  src="/images/arrow-down.svg"
-                  width={16}
-                  height={16}
-                />
-              </DropdownMenuTrigger>
-              <DropdownMenuContent>
-                {shopMenuOptions.map((option) => {
-                  return (
-                    <DropdownMenuItem key={option.value}>
-                      {option.label}
-                    </DropdownMenuItem>
-                  );
-                })}
-              </DropdownMenuContent>
-            </DropdownMenu>
-
-            <Link href="#">On Sale</Link>
-            <Link href="#">New Arrivals</Link>
-            <Link href="#">Brands</Link>
+            {renderMenuList()}
           </div>
           <div className="flex-1">
             <label className="relative block">
