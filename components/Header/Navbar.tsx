@@ -33,7 +33,7 @@ export const Navbar = () => {
   ];
   const renderMenuList = () => {
     return (
-      <div className="w-[250px]">
+      <div className={cn(isMobile ? "flex-col" : "flex-row", "flex items-center gap-6")}>
         <DropdownMenu>
           <DropdownMenuTrigger className="flex items-center">
             <span className="pr-1">Shop</span>
