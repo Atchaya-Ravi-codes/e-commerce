@@ -13,11 +13,7 @@ import {
 } from "../ui/dropdown-menu";
 import { Input } from "../ui/input";
 import { cn } from "@/lib/utils";
-import {
-  SheetTrigger,
-  SheetContent,
-  Sheet,
-} from "../ui/sheet";
+import { SheetTrigger, SheetContent, Sheet } from "../ui/sheet";
 
 export const Navbar = () => {
   const isMobile = useIsBreakpoint(Breakpoint.Small, Breakpoint.Medium);
@@ -37,8 +33,8 @@ export const Navbar = () => {
   ];
   const renderMenuList = () => {
     return (
-      <>
-        <DropdownMenu className="w-[250px]">
+      <div className="w-[250px]">
+        <DropdownMenu>
           <DropdownMenuTrigger className="flex items-center">
             <span className="pr-1">Shop</span>
             <Image
@@ -61,7 +57,7 @@ export const Navbar = () => {
         <Link href="#">On Sale</Link>
         <Link href="#">New Arrivals</Link>
         <Link href="#">Brands</Link>
-      </>
+      </div>
     );
   };
   return (
