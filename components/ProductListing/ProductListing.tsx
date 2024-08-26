@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { productsData } from "../Home/__fixtures___";
 import { ProductCard } from "../ProductCard/ProductCard";
 import { Separator } from "../ui/separator";
@@ -9,10 +9,19 @@ import { useRouter } from "next/navigation";
 export const ProductListing = () => {
   const pageSize = 12;
   const router = useRouter();
-  const params = new URLSearchParams(window.location.search);
-  const currentpageNumber = params.get("page") ? Number(params.get("page")) : productsData.currentPage;
-  const [currentPage, setCurrentPage] = useState(currentpageNumber);
+  const [currentPage, setCurrentPage] = useState(productsData.currentPage);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      const currentpageNumber = params.get("page")
+        ? Number(params.get("page"))
+        : productsData.currentPage;
+      setCurrentPage(currentpageNumber);
+    }
+  }, []);
   const handlePageChange = (newPage: number) => {
+    const params = new URLSearchParams(window.location.search);
     params.set("page", newPage.toString());
     const newUrl = `${window.location.pathname}?${params.toString()}`;
     router.push(newUrl);
