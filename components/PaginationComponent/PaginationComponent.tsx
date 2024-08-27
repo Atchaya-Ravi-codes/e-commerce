@@ -1,5 +1,4 @@
 import React from "react";
-import { Button } from "../ui/button";
 import { cn } from "@/lib/utils";
 import {
   Pagination,
@@ -41,14 +40,6 @@ export function PaginationComponent({
     setActive(page);
     onPageChange(page);
   };
-
-  const getItemProps = (index: number) =>
-    ({
-      variant: active === index ? "filled" : "text",
-      color: "violet",
-      onClick: () => handlePageChange(index),
-      className: "rounded-full",
-    } as any);
 
   const next = () => {
     if (active === totalPages) return;
